@@ -1,5 +1,4 @@
 ARG ffmpeg_tag=4.4-nvidia
-# Radarr needs to be develop at the moment as it is based on Ubuntu 20.04 LTS which is needed for FFMPEG requirements, where latest is based on Ubuntu 18.04 LTS.
 ARG radarr_tag=latest
 FROM jrottenberg/ffmpeg:${ffmpeg_tag} as ffmpeg
 FROM ghcr.io/linuxserver/radarr:${radarr_tag}
