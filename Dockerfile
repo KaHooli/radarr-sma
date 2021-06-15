@@ -1,4 +1,4 @@
-ARG ffmpeg_tag=4.4-nvidia
+ARG ffmpeg_tag=4.4-nvidia2004
 ARG radarr_tag=latest
 FROM jrottenberg/ffmpeg:${ffmpeg_tag} as ffmpeg
 FROM ghcr.io/linuxserver/radarr:${radarr_tag}
@@ -22,7 +22,6 @@ RUN \
   apt-get install -y \
     git \
     wget \
-    openssl \
     python3 \
     python3-pip && \
 # make directory
@@ -33,7 +32,7 @@ RUN \
   python3 -m pip install --user --upgrade pip && \
   python3 -m pip install --user virtualenv && \
   python3 -m virtualenv ${SMA_PATH}/venv && \
-  ${SMA_PATH}/venv/bin/pip3 install -r ${SMA_PATH}/setup/requirements.txt && \
+  ${SMA_PATH}/venv/bin/pip install -r ${SMA_PATH}/setup/requirements.txt && \
 # ffmpeg
   chgrp users /usr/local/bin/ffmpeg && \
   chgrp users /usr/local/bin/ffprobe && \
